@@ -9,6 +9,13 @@
     "project": "./tsconfig.json"
   },
   "rules": {
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "import/prefer-default-export": [
+      "warn",
+      {
+        "target": "single"
+      }
+    ],
+    "react/require-default-props": "off"
   }
 }
