@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import GithubProvider from "next-auth/providers/github"
-// import NaverProvider from "next-auth/providers/naver"
+import NaverProvider from "next-auth/providers/naver"
 
 const authOptions = {
   // Configure one or more authentication providers
@@ -10,10 +10,10 @@ const authOptions = {
       clientSecret: process.env.GITHUB_SECRET as string,
     }),
     // ...add more providers here
-    // NaverProvider({
-    //   clientId: process.env.NAVER_CLIENT_ID as string,
-    //   clientSecret: process.env.NAVER_CLIENT_SECRET as string
-    // })
+    NaverProvider({
+      clientId: process.env.NAVER_CLIENT_ID as string,
+      clientSecret: process.env.NAVER_CLIENT_SECRET as string
+    })
   ],
   pages: {
     signIn: "/auth/signin",
