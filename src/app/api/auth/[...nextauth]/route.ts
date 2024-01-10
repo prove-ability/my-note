@@ -15,6 +15,9 @@ const authOptions = {
       clientSecret: process.env.NAVER_CLIENT_SECRET as string
     })
   ],
+  pages: {
+    signIn: "/auth/signin",
+  },
   callbacks: {
     async signIn(userDetail: {}) {
       if (Object.keys(userDetail).length === 0) {
