@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 import type { Config } from 'tailwindcss'
 
 const config: Config = {
@@ -15,6 +16,7 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  // eslint-disable-next-line import/no-extraneous-dependencies
+  plugins: [require('daisyui')],
 }
 export default config
