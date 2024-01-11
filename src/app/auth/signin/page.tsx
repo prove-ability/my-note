@@ -24,7 +24,7 @@ export default async function SignIn() {
           callbackUrl: `${process.env.NEXTAUTH_URL}/api/auth/callback/github`,
         }}
       />
-      <LoginButton
+      {/* <LoginButton
         auth={{
           id: 'naver',
           name: 'Naver',
@@ -32,7 +32,7 @@ export default async function SignIn() {
           signinUrl: `${process.env.NEXTAUTH_URL}/api/auth/signin/naver`,
           callbackUrl: `${process.env.NEXTAUTH_URL}/api/auth/callback/naver`,
         }}
-      />
+      /> */}
       {/* {Object.values(resp).map((provider) => (
         <div key={provider.id} className="[&:not(:first-child)]:mt-4">
           <LoginButton auth={provider} />
