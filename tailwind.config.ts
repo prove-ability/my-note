@@ -18,5 +18,8 @@ const config: Config = {
   },
   // eslint-disable-next-line import/no-extraneous-dependencies
   plugins: [require('daisyui')],
+  daisyui: {
+    themes: ["forest", "fantasy"],
+  },
 }
 export default config

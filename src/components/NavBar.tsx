@@ -1,16 +1,45 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/label-has-associated-control */
+
 'use client'
 
+import Image from 'next/image'
 import Avatar from '@/components/Avatar'
 import { signOut, useSession } from 'next-auth/react'
+import { useEffect } from 'react'
+import { themeChange } from 'theme-change'
 
 export default function NavBar() {
+  useEffect(() => {
+    themeChange(false)
+
+    const html = document.querySelector('html')
+    if (html?.getAttribute('data-theme') === 'dark') {
+      html.setAttribute('data-theme', 'forest')
+    } else {
+      html?.setAttribute('data-theme', 'fantasy')
+    }
+  }, [])
+
   const { data: session } = useSession()
+
   if (!session) {
     return <span className="loading loading-spinner loading-lg" />
   }
 
   const handleClickLogout = () => {
     signOut()
+  }
+
+  const handleThemeChange = (event: React.MouseEvent<HTMLLabelElement>) => {
+    event.preventDefault()
+    const html = document.querySelector('html')
+    if (html?.getAttribute('data-theme') === 'fantasy') {
+      html.setAttribute('data-theme', 'forest')
+    } else {
+      html?.setAttribute('data-theme', 'fantasy')
+    }
   }
 
   return (
@@ -89,6 +118,26 @@ export default function NavBar() {
         </ul>
       </div>
       <div className="navbar-end flex gap-2">
+        <label
+          className="swap swap-rotate btn btn-ghost"
+          onClick={handleThemeChange}
+        >
+          <input type="checkbox" />
+          <Image
+            className="swap-on fill-current w-10 h-10"
+            src="/image/layout/sun.svg"
+            width={32}
+            height={32}
+            alt="sun"
+          />
+          <Image
+            className="swap-off fill-current w-10 h-10"
+            src="/image/layout/moon.svg"
+            width={32}
+            height={32}
+            alt="moon"
+          />
+        </label>
         <h5 className="text-sm">{session.user?.name}</h5>
         <Avatar />
         <button className="btn" type="button" onClick={handleClickLogout}>
